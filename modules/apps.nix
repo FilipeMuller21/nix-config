@@ -20,4 +20,6 @@
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
   };
+
+  programs.obs-studio.enable = true;
 }
