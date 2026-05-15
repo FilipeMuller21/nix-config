@@ -1,14 +1,21 @@
 { config, lib, pkgs, ... } : {
 
-
-  environment.systemPackages = with pkgs; [
-    oh-my-zsh
-  ];
-
   programs.zsh = {
     enable = true;
+    autosuggestions.enable = true;
+    zsh-autoenv.enable = true;
+    syntaxHighlighting.enable = true;
     ohMyZsh = {
-      theme = "arrow";
-    };    
+      enable = true;
+      theme = "robbyrussell";
+      plugins = [
+        "git"
+	"npm"
+	"history"
+	"node"
+	"rust"
+	"deno"
+      ];
+    };   
   };
 }
