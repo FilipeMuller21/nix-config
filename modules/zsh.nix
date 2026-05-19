@@ -7,7 +7,7 @@
     syntaxHighlighting.enable = true;
     ohMyZsh = {
       enable = true;
-      theme = "robbyrussell";
+      theme = "darkblood";
       plugins = [
         "git"
 	"npm"
@@ -17,5 +17,11 @@
 	"deno"
       ];
     };   
+    
+    interactiveShellInit = "fastfetch";
   };
+
+
+
+
 }

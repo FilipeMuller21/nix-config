@@ -11,6 +11,10 @@
     xwayland-satellite
     spotify
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+    unrar
+    rar
+    libreoffice
+
   ];
 
   #steam support
