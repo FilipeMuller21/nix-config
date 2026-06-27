@@ -11,9 +11,15 @@
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
       };
+    #nixvim
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
-  outputs = { self, nixpkgs, niri, zen-browser, ... }@inputs :
+  outputs = { self, nixpkgs, niri, zen-browser, nixvim, ... }@inputs :
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};

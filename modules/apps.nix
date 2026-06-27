@@ -1,8 +1,7 @@
-{ inputs, pkgs, ... }:{
+{ inputs, pkgs, config, ... }:{
 
   environment.systemPackages = with pkgs; [
-    neovim
-    ghostty
+    vscode.fhs
     git
     wget
     curl
@@ -14,7 +13,12 @@
     unrar
     rar
     libreoffice
-
+    prismlauncher
+    nodejs
+    python3
+    notion-app
+    mpv
+    jq
   ];
 
   #steam support
@@ -24,6 +28,25 @@
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
   };
-
+  programs.neovim.enable = true;
   programs.obs-studio.enable = true;
+
+  services.postgresql = {
+    enable = true;
+    package = pkgs.postgresql_16;
+    # Optional: Pin a specific version (e.g., postgresql_16, postgresql_17)
+    # package = pkgs.postgresql_16; 
+    
+    # Automatically create databases on rebuild
+    ensureDatabases = [ "my_database" ];
+    
+    # Allow local users to connect
+    authentication = pkgs.lib.mkOverride 10 ''
+      #type database DBuser auth-method
+      local all       all     trust
+    '';
+  };
+
+
 }
+

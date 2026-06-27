@@ -13,7 +13,7 @@
 		playerctl
 		pamixer
 		networkmanagerapplet
-		fastfetch
 		btop
+		fastfetch
 	];
 }
