@@ -16,9 +16,9 @@
     prismlauncher
     nodejs
     python3
-    notion-app
     mpv
     jq
+    obsidian
   ];
 
   #steam support

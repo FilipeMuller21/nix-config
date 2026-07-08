@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, }:{
+{ inputs, config, pkgs, lib, ... }:{
 
 services.minecraft-server = {
   enable = true;
@@ -18,4 +18,5 @@ services.minecraft-server = {
   };
   jvmOpts = "-Xms2048M -Xmx2048M"; 
 };
+  systemd.services.minecraft-server.wantedBy = lib.mkForce [];
 }

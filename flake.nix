@@ -17,9 +17,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+
   };
 
-  outputs = { self, nixpkgs, niri, zen-browser, nixvim, ... }@inputs :
+  outputs = { self, nixpkgs, niri, zen-browser, nixvim, spicetify-nix, ... }@inputs :
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -29,7 +31,9 @@
 	nixos = nixpkgs.lib.nixosSystem {
 	  inherit system;
 	  specialArgs = {inherit inputs;};
-          modules = [ ./configuration.nix ]; 
+          modules = [ ./configuration.nix
+		inputs.spicetify-nix.nixosModules.default	
+	  ]; 
       };
     };
   };
