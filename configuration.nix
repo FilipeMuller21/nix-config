@@ -15,7 +15,9 @@
       ./modules/zsh.nix
       ./modules/spicetify.nix
       ./modules/minecraft.nix
-    ];
+       ./modules/nixvim.nix
+       ./modules/doom-emacs.nix
+     ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -56,7 +58,9 @@
   system.stateVersion = "25.11";
 
 
-  #minecraft time
-
+systemd.user.services.xdg-desktop-portal-gnome.environment = {
+  COGL_DRIVER = "gl";
+  GSK_RENDERER = "gl";
+};
 
   }

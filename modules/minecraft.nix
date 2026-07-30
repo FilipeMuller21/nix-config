@@ -1,5 +1,8 @@
 { inputs, config, pkgs, lib, ... }:{
 
+
+
+
 services.minecraft-server = {
   enable = true;
   eula = true;

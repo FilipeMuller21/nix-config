@@ -17,11 +17,17 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+
+    #doom emacs
+    nix-doom-emacs-unstraightened = {
+    url = "github:marienz/nix-doom-emacs-unstraightened";
+    };
+    #spicetify
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
 
   };
 
-  outputs = { self, nixpkgs, niri, zen-browser, nixvim, spicetify-nix, ... }@inputs :
+  outputs = { self, nixpkgs, niri, zen-browser, nixvim, spicetify-nix, nix-doom-emacs-unstraightened,... }@inputs :
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -32,8 +38,10 @@
 	  inherit system;
 	  specialArgs = {inherit inputs;};
           modules = [ ./configuration.nix
-		inputs.spicetify-nix.nixosModules.default	
-	  ]; 
+		inputs.spicetify-nix.nixosModules.default
+		inputs.nixvim.nixosModules.default
+	  ];
+
       };
     };
   };
