@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports =
@@ -8,19 +8,36 @@
       ./modules/users.nix
       ./modules/tuigreet.nix
       ./modules/bluetooth.nix
-      ./modules/dolphin.nix
+#      ./modules/dolphin.nix
       ./modules/noctalia.nix
       ./modules/apps.nix
       ./modules/niri.nix
       ./modules/zsh.nix
       ./modules/spicetify.nix
-      ./modules/minecraft.nix
+    #  ./modules/minecraft.nix
        ./modules/nixvim.nix
        ./modules/doom-emacs.nix
-     ];
+       ./modules/file-managers.nix
+ ];
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader = {
+    systemd-boot.enable = false;
+    efi.canTouchEfiVariables = true;
+    timeout = 20;
+    grub = {
+      enable = true;
+      device = "nodev";
+      efiSupport = true;
+      useOSProber = true;
+      gfxmodeEfi = "1920x1080x32";
+      theme = pkgs.runCommand "cybergrub-2077" { } ''
+        mkdir -p $out
+        cp -r ${inputs.cybergrub-theme}/CyberGRUB-2077/. $out/
+	chmod -R u+w $out
+	cp -f ${inputs.cybergrub-theme}/img/logos/nixos.png $out/logo.png
+      '';
+    };
+  };
 
   networking.hostName = "nixos";
 
@@ -55,6 +72,7 @@
   
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
+ 
   system.stateVersion = "25.11";
 
 

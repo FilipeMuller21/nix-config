@@ -21,7 +21,9 @@
     obsidian
     discord
     davinci-resolve
-    opencode
+    anydesk
+    flutter
+
 ];
 
   #steam support

@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "cybergrub-theme": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1772317436,
+        "narHash": "sha256-yWeYzZ76pJ2RMGxZSU+AbJF+fjwljLdwWb0T1NrK6ok=",
+        "owner": "adnksharp",
+        "repo": "CyberGRUB-2077",
+        "rev": "d445dc3111b363480908af9cd784cb0b0670cacf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "adnksharp",
+        "repo": "CyberGRUB-2077",
+        "type": "github"
+      }
+    },
     "doomdir": {
       "flake": false,
       "locked": {
@@ -270,6 +286,7 @@
     },
     "root": {
       "inputs": {
+        "cybergrub-theme": "cybergrub-theme",
         "niri": "niri",
         "nix-doom-emacs-unstraightened": "nix-doom-emacs-unstraightened",
         "nixpkgs": "nixpkgs_3",

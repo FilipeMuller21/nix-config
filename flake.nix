@@ -25,6 +25,13 @@
     #spicetify
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
 
+    #tema do grub inspirado em blasphemous
+    cybergrub-theme = {
+      url = "github:adnksharp/CyberGRUB-2077";
+      flake = false;
+    }; 
+   
+
   };
 
   outputs = { self, nixpkgs, niri, zen-browser, nixvim, spicetify-nix, nix-doom-emacs-unstraightened,... }@inputs :
@@ -32,17 +39,19 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
     in
-    {
+    { 
     nixosConfigurations = {
 	nixos = nixpkgs.lib.nixosSystem {
 	  inherit system;
 	  specialArgs = {inherit inputs;};
-          modules = [ ./configuration.nix
+          modules = [ 
+	        ./configuration.nix
 		inputs.spicetify-nix.nixosModules.default
 		inputs.nixvim.nixosModules.default
-	  ];
+	        
 
+	  ];
       };
     };
-  };
+  }; 
 }
